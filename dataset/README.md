@@ -6,7 +6,7 @@ All binary files include:
 - floating-point values are stored as 32-bit `float`
 - strings are stored as: `int len` followed by `len` raw bytes (no `\0` terminator)
 
-For a dataset with name `<name>` (e.g., `dblp`, `youtube`, `msmarco`, `laion`) we use five binary files:
+For a dataset with name `<name>` (e.g., `dblp`, `youtube`, `msmarco`, `laion`), we use five binary files:
 
 - `<name>_meta.bin`
 - `<name>_vectors.bin`
