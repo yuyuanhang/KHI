@@ -11,8 +11,8 @@ For a dataset with name `<name>` (e.g., `dblp`, `youtube`, `msmarco`, `laion`), 
 - `<name>_meta.bin`
 - `<name>_vectors.bin`
 - `<name>_query_vectors_1k.bin`
-- `<name>_constraints_*.bin`
-- `<name>_top100_*.bin`
+- `<name>_constraints_*_1k.bin`
+- `<name>_top100_*_1k.bin`
 
 Below we describe the role and layout of each file type.
 
@@ -58,10 +58,10 @@ A typical layout is:
 
 ---
 
-## 3. `<name>_constraints_*.bin`
+## 3. `<name>_constraints_*_1k.bin`
 
 Stores the **range predicates for queries**. 
-The suffix 1_16_1k encodes the target selectivity (1/16) and the number of range predicates (1,000).
+The suffix, e.g., 1_16_1k encodes the target selectivity (1/16) and the number of range predicates (1,000).
 This file is read by `Query::load_constraints`.
 
 Binary layout:
@@ -91,7 +91,7 @@ which is the range predicate $B$ used by the RFANNS query $Q=(q, B)$.
 
 ---
 
-## 4. `<name>_top100_*.bin`
+## 4. `<name>_top100_*_1k.bin`
 
 Stores the **ground-truth nearest neighbors** for evaluation.
 
@@ -116,7 +116,7 @@ The suffix of the filename encodes the selectivity and the number of queries, an
 
 belong to the same query set, where 1_16 indicates the target selectivity (σ = 1/16) and 1k indicates that there are 1000 queries.
 
-Across different selectivities (e.g., 1_16_1k, 1_64_1k, 1_256_1k), the query vectors file is the same (e.g., dblp_query_vectors_1k.bin): only the range predicates (dblp_constraints_*.bin) and the corresponding ground-truth files (dblp_top100_*.bin) change.
+Across different selectivities (e.g., 1_16_1k, 1_64_1k, 1_256_1k), the query vectors file is the same (e.g., dblp_query_vectors_1k.bin): only the range predicates (`dblp_constraints_*_1k.bin`) and the corresponding ground-truth files (`dblp_top100_*_1k.bin`) change.
 
 ---
 
@@ -124,11 +124,11 @@ These five files together are sufficient to reproduce our experiments:
 
 - `<name>_meta.bin`  — attribute schema + values  
 - `<name>_vectors.bin and <name>_query_vectors_1k.bin` — embedding vectors  
-- `<name>_constraints_*.bin` — per-query numeric ranges  
-- `<name>_top100_*.bin` — ground-truth top-100 neighbors
+- `<name>_constraints_*_1k.bin` — per-query numeric ranges  
+- `<name>_top100_*_1k.bin` — ground-truth top-100 neighbors
 
 Due to file size limits on this repository, we only include the following files here:
-`<name>_query_vectors_1k.bin`, `<name>_constraints_*.bin`, and `<name>_top100_*.bin`.
+`<name>_query_vectors_1k.bin`, `<name>_constraints_*_1k.bin`, and `<name>_top100_*_1k.bin`.
 
 The full dataset files `<name>_meta.bin` and `<name>_vectors.bin` are available on Zenodo at:
 https://zenodo.org/records/18093887 and https://zenodo.org/records/18106651.
