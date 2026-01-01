@@ -49,7 +49,7 @@ Logical contents:
 A typical layout is:
 
 1. `int n_a` — number of attributes  
-2. For each attribute `i = 0 .. n_a-1`  
+2. For each attribute `i = 0, ..., n_a - 1`  
    2.1 `int len` — length of the attribute name  
    2.2 `char[len]` — attribute name bytes  
 3. `int n` — number of objects  
@@ -104,7 +104,7 @@ following layout:
 2. `int32 top_k`  
    Number of ground-truth neighbors per query (typically `100`).
 
-3. For each query index `i = 0 .. n_q - 1`:
+3. For each query index `i = 0, ..., n_q - 1`:
    - `int32 knn_id[top_k]`
      The object IDs of the top-`top_k` nearest neighbors of query `i`. IDs are **0-based** indices into the dataset, consistent with the order used in `<name>_vectors.bin` / `<name>_meta.bin`.
    - `float32 knn_dist[top_k]`  
