@@ -500,10 +500,9 @@ void MAGraph::search(vector<int> &SearchEF, const string &save_file, int edge_li
         metric_hops = 0;
         metric_distance_computations = 0;
 
-        q->n_q = 1000;
         for (int i = 0; i < q->n_q; i++)
         {
-            //if (i % 10 == 0) { cout << "Performing the " << i << "th query..." << endl; }
+            if (i % 10 == 0) { cout << "Performing the " << i << "th query..." << endl; }
             auto gt = q->knn_id[i];
             auto start = chrono::high_resolution_clock::now();
 
@@ -610,9 +609,6 @@ vector<KDTree::node*> MAGraph::range_filter(vector<float> &range, int top_k)
 priority_queue<PFI> MAGraph::TopDown_nodeentries_search(const vector<KDTree::node*> &filtered_nodes, float* query_vec,
         int ef, int query_k, vector<float> &range, int edge_limit)
 {
-    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-    std::default_random_engine e(seed);
-
     priority_queue<PFI, vector<PFI>, greater<PFI>> candidate_set;
     priority_queue<PFI> top_candidates;
     searcher::Bitset visited_set(data->n);
@@ -667,11 +663,6 @@ priority_queue<PFI> MAGraph::TopDown_nodeentries_search(const vector<KDTree::nod
                 if (!top_candidates.empty())
                     lowerBound = top_candidates.top().first;
             }
-        }
-
-        if (metric_hops <= 200)
-        {
-            cout << metric_hops << " " << lowerBound << endl;
         }
     }
     while (top_candidates.size() > query_k)
