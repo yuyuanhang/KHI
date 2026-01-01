@@ -78,8 +78,7 @@ int main(int argc, char* argv[])
 
         {
             Timer timer("Querying");
-            vector<int> SearchEF = {400};
-            //vector<int> SearchEF = {10000, 9000, 8000};
+            vector<int> SearchEF = {1400, 700, 400, 300, 250, 200, 180, 160, 140, 120, 100, 90, 80, 70, 60, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10};
             idx->search(SearchEF, res_file, edge_limit, q, top_k);
         }
 
@@ -87,6 +86,7 @@ int main(int argc, char* argv[])
             Timer timer("Releasing memory");
             delete q;
             delete idx;
+            delete data;
         }
     }
 }
