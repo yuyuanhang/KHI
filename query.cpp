@@ -60,8 +60,7 @@ void Query::load_constraints(const string &file, Data* data)
     in.read(reinterpret_cast<char*>(&n), sizeof(int));
     if (n != n_q)
     {
-        n_q = n;
-        //throw runtime_error("the constraint file " + file + " is inconsistent with its query file in the number of queries");
+        throw runtime_error("the constraint file " + file + " is inconsistent with its query file in the number of queries");
     }
 
     vector<float*> a_v;
