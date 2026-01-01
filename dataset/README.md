@@ -87,7 +87,7 @@ q\textunderscore a[i] = [\text{attr}_0^\text{low}, \text{attr}_0^\text{high}, \t
           \dots]
 $$
 
-which is the range predicate \(B\) used by the RFANNS query Q=(q, B).
+which is the range predicate $B$ used by the RFANNS query $Q=(q, B)$.
 
 ---
 
@@ -111,12 +111,12 @@ following layout:
      The corresponding distances from query `i` to each neighbor in `knn_id[i]`, using the same embedding-space distance as in the code (e.g., L2).
    
 The suffix of the filename encodes the selectivity and the number of queries, and is shared with the corresponding constraint file. For example:
-	•	dblp_top100_1_16_1k.bin
-	•	dblp_constraints_1_16_1k.bin
+- dblp_top100_1_16_1k.bin
+- dblp_constraints_1_16_1k.bin
 
 belong to the same query set, where 1_16 indicates the target selectivity (σ = 1/16) and 1k indicates that there are 1000 queries.
 
-Across different selectivities (e.g., 1_16_1k, 1_64_1k, 1_256_1k), the query vectors file is the same (e.g., dblp_query_vectors_1k.bin): only the range predicates (*_constraints_*.bin) and the corresponding ground-truth files (*_top100_*.bin) change.
+Across different selectivities (e.g., 1_16_1k, 1_64_1k, 1_256_1k), the query vectors file is the same (e.g., dblp_query_vectors_1k.bin): only the range predicates (dblp_constraints_*.bin) and the corresponding ground-truth files (dblp_top100_*.bin) change.
 
 ---
 
